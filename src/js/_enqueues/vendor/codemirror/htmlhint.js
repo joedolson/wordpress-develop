@@ -1,5 +1,5 @@
 /*!
- * HTMLHint v1.1.4
+ * HTMLHint v0.14.1
  * https://github.com/htmlhint/HTMLHint
  *
  * (c) 2014-2016 Yanis Wang <yanis.wang@gmail.com>; 2018 David Dias .
