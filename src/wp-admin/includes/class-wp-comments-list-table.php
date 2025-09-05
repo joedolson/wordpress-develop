@@ -403,8 +403,13 @@ class WP_Comments_List_Table extends WP_List_Table {
 		if ( ! isset( $has_items ) ) {
 			$has_items = $this->has_items();
 		}
-
-		echo '<div class="alignleft actions">';
+		?>
+		<button type="button" class="button button-secondary show-tablenav">
+			<span class="dashicons dashicons-filter" aria-hidden="true"></span>
+			<?php _e( 'Filters' ); ?>
+		</button>
+		<?php
+		echo '<div class="actions listfilters">';
 
 		if ( 'top' === $which ) {
 			ob_start();

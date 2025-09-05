@@ -1361,6 +1361,11 @@ $( function() {
 		wp.a11y.speak( errorMessage );
 	});
 
+ 	// Toggle filters on small screens.
+	 $( 'button.show-tablenav' ).on( 'click', function() {
+		$( this ).closest( '.tablenav-filters' ).toggleClass( 'is-expanded' );
+	});
+
 	/**
 	 * Shows row actions on focus of its parent container element or any other elements contained within.
 	 *

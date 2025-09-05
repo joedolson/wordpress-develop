@@ -661,8 +661,14 @@ class WP_Plugins_List_Table extends WP_List_Table {
 		if ( ! in_array( $status, array( 'recently_activated', 'mustuse', 'dropins' ), true ) ) {
 			return;
 		}
-
-		echo '<div class="alignleft actions">';
+		?>
+		<div class="tablenav-filters">
+		<button type="button" class="button button-secondary show-tablenav">
+			<span class="dashicons dashicons-filter" aria-hidden="true"></span>
+			<?php _e( 'Filters' ); ?>
+		</button>
+		<?php
+		echo '<div class="actions listfilters">';
 
 		if ( 'recently_activated' === $status ) {
 			submit_button( __( 'Clear List' ), '', 'clear-recent-list', false );
@@ -680,6 +686,9 @@ class WP_Plugins_List_Table extends WP_List_Table {
 			) . '</p>';
 		}
 		echo '</div>';
+		?>
+		</div>
+		<?php
 	}
 
 	/**

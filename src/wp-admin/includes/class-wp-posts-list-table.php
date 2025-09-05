@@ -566,7 +566,12 @@ class WP_Posts_List_Table extends WP_List_Table {
 	 */
 	protected function extra_tablenav( $which ) {
 		?>
-		<div class="alignleft actions">
+		<div class="tablenav-filters">
+		<button type="button" class="button button-secondary show-tablenav">
+			<span class="dashicons dashicons-filter" aria-hidden="true"></span>
+			<?php _e( 'Filters' ); ?>
+		</button>
+		<div class="actions listfilters">
 		<?php
 		if ( 'top' === $which ) {
 			ob_start();
@@ -617,6 +622,9 @@ class WP_Posts_List_Table extends WP_List_Table {
 		 * @param string $which The location of the extra table nav markup: 'top' or 'bottom'.
 		 */
 		do_action( 'manage_posts_extra_tablenav', $which );
+		?>
+		</div>
+		<?php
 	}
 
 	/**

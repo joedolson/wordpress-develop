@@ -323,7 +323,11 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	 */
 	protected function extra_tablenav( $which ) {
 		?>
-		<div class="alignleft actions">
+		<button type="button" class="button button-secondary show-tablenav">
+			<span class="dashicons dashicons-filter" aria-hidden="true"></span>
+			<?php _e( 'Filters' ); ?>
+		</button>
+		<div class="actions listfilters">
 		<?php
 		if ( 'top' === $which ) {
 			ob_start();

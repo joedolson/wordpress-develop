@@ -681,16 +681,33 @@ th.sorted a span {
 	height: 30px;
 	margin: 6px 0 4px;
 	padding-top: 5px;
-	vertical-align: middle;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.tablenav button.show-tablenav {
+	display: none;
+}
+
+.tablenav .tablenav-filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.tablenav .tablenav-filters.is-expanded .listfilters {
+	display: block;
+}
+
+.tablenav:has(.tablenav-filters.is-expanded) .tablenav-pages {
+	width: 100%;
+	display: flex;
+	justify-content: end;
 }
 
 .tablenav.themes {
 	max-width: 98%;
-}
-
-.tablenav .tablenav-pages {
-	float: right;
-	margin: 0 0 9px;
 }
 
 .tablenav .no-pages,
@@ -718,10 +735,6 @@ th.sorted a span {
 .tablenav .one-page .displaying-num {
 	display: inline-block;
 	margin: 5px 0;
-}
-
-.tablenav .actions {
-	padding: 0 8px 0 0;
 }
 
 .wp-filter .actions {
@@ -1824,6 +1837,12 @@ div.action-links,
 
 @media screen and (max-width: 782px) {
 	/* WP List Table Options & Filters */
+	.tablenav button.show-tablenav {
+		display: flex;
+		gap: 3px;
+		align-items: center;
+	}
+
 	.tablenav {
 		height: auto;
 	}
@@ -1835,14 +1854,6 @@ div.action-links,
 	.tablenav.bottom {
 		position: relative;
 		margin-top: 15px;
-	}
-
-	.tablenav br {
-		display: none;
-	}
-
-	.tablenav br.clear {
-		display: block;
 	}
 
 	.tablenav.top .actions,
@@ -1867,12 +1878,6 @@ div.action-links,
 		top: 11px;
 		margin: 0;
 		font-size: 14px;
-	}
-
-	.tablenav .tablenav-pages {
-		width: 100%;
-		text-align: center;
-		margin: 0 0 25px;
 	}
 
 	.tablenav.bottom .tablenav-pages {
@@ -2384,11 +2389,5 @@ div.action-links,
 
 	.tablenav.bottom .tablenav-pages.one-page {
 		height: auto;
-	}
-
-	.tablenav-pages .tablenav-paging-text {
-		float: left;
-		width: 100%;
-		padding-top: 0.5em;
 	}
 }
