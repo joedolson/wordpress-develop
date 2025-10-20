@@ -699,8 +699,7 @@ function count_many_users_posts( $users, $post_type = 'post', $public_only = fal
 	$count       = wp_cache_get_salted( $cache_key, 'post-queries', $cache_salts );
 
 	if ( false === $count ) {
-		$where  = get_posts_by_author_sql( $post_type, true, null, $public_only );
-		$result = $wpdb->get_results( "SELECT post_author, COUNT(*) FROM $wpdb->posts $where AND post_author IN ($userlist) GROUP BY post_author", ARRAY_N );
+		$result = $wpdb->get_results( $query, ARRAY_N );
 
 		$count = array_fill_keys( $users, 0 );
 		foreach ( $result as $row ) {
@@ -1319,6 +1318,21 @@ function get_user_meta( $user_id, $key = '', $single = false ) {
  */
 function update_user_meta( $user_id, $meta_key, $meta_value, $prev_value = '' ) {
 	return update_metadata( 'user', $user_id, $meta_key, $meta_value, $prev_value );
+}
+
+/**
+ * Queue user meta for lazy-loading.
+ *
+ * @since 6.9.0
+ *
+ * @param int[] $user_ids List of user IDs.
+ */
+function wp_lazyload_user_meta( array $user_ids ) {
+	if ( empty( $user_ids ) ) {
+		return;
+	}
+	$lazyloader = wp_metadata_lazyloader();
+	$lazyloader->queue_objects( 'user', $user_ids );
 }
 
 /**
