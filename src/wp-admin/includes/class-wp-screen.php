@@ -1174,7 +1174,7 @@ final class WP_Screen {
 	/**
 	 * Gets the option to enable or disable meta box reordering.
 	 *
-	 * @since 7.1.0
+	 * @since 7.2.0
 	 *
 	 * @return string Meta box reordering option markup.
 	 */
@@ -1188,7 +1188,7 @@ final class WP_Screen {
 	/**
 	 * Determines whether to show the meta box reordering option.
 	 *
-	 * @since 7.1.0
+	 * @since 7.2.0
 	 *
 	 * @global array $wp_meta_boxes Global meta box state.
 	 *

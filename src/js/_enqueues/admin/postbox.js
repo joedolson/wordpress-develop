@@ -453,7 +453,7 @@
 		/**
 		 * Checks whether meta box reordering is enabled.
 		 *
-		 * @since 7.1.0
+		 * @since 7.2.0
 		 *
 		 * @return {boolean} Whether meta box reordering is enabled.
 		 */
@@ -470,7 +470,7 @@
 		/**
 		 * Enables or disables the meta box reordering UI.
 		 *
-		 * @since 7.1.0
+		 * @since 7.2.0
 		 *
 		 * @param {boolean} enabled Whether reordering should be enabled.
 		 * @return {void}
@@ -491,7 +491,7 @@
 				$sortables
 					.sortable( this.metaBoxReorderingEnabled ? 'enable' : 'disable' )
 					.find( '.ui-sortable-handle' )
-						.toggleClass( 'is-non-sortable', ! this.metaBoxReorderingEnabled );
+					.toggleClass( 'is-non-sortable', ! this.metaBoxReorderingEnabled );
 			}
 		},
 
@@ -537,7 +537,7 @@
 		/**
 		 * Saves the meta box reordering setting to the server.
 		 *
-		 * @since 7.1.0
+		 * @since 7.2.0
 		 *
 		 * @memberof postboxes
 		 *
