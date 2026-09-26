@@ -560,6 +560,11 @@
 					}
 				}
 			},
+			"core/search": {
+				"border": {
+					"color": "#757575",
+				}
+			},
 			"core/site-title": {
 				"elements": {
 					"link": {
