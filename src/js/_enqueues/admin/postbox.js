@@ -553,7 +553,8 @@
 					screenoptionnonce: $( '#screenoptionnonce' ).val()
 				},
 				function() {
-					wp.a11y.speak( __( 'Screen Options updated.' ) );
+					const message = ( enabled ) ? __( 'Panel reordering enabled.' ) : __( 'Panel reordering disabled.' );
+					wp.a11y.speak( message, 'assertive' );
 				}
 			);
 		},
