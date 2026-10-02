@@ -1043,7 +1043,7 @@ final class WP_Screen {
 		 */
 		$this->_screen_settings = apply_filters( 'screen_settings', $this->_screen_settings, $this );
 
-		if ( $this->_screen_settings || $this->_options || $show_meta_box_reordering_option ) {
+		if ( $this->_screen_settings || $this->_options ) {
 			$show_screen = true;
 		}
 
