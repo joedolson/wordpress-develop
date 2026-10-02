@@ -1015,13 +1015,13 @@ final class WP_Screen {
 
 		if ( 'post' === $this->base ) {
 			if ( $show_meta_box_reordering_option ) {
-				$additional_settings .= '<label class="editor-expand hidden" for="editor-expand-toggle">';
+				$additional_settings .= '<p class="editor-expand hidden">';
 				$additional_settings .= '<input type="checkbox" id="editor-expand-toggle"' . checked( get_user_setting( 'editor_expand', 'on' ), 'on', false ) . ' /> ';
-				$additional_settings .= __( 'Enable full-height editor and distraction-free functionality.' ) . '</label>';
+				$additional_settings .= '<label for="editor-expand-toggle">' . __( 'Enable full-height editor and distraction-free functionality.' ) . '</label></p>';
 			} else {
-				$expand                 = '<fieldset class="editor-expand hidden"><legend>' . __( 'Additional settings' ) . '</legend><label for="editor-expand-toggle">';
-				$expand                .= '<input type="checkbox" id="editor-expand-toggle"' . checked( get_user_setting( 'editor_expand', 'on' ), 'on', false ) . ' />';
-				$expand                .= __( 'Enable full-height editor and distraction-free functionality.' ) . '</label></fieldset>';
+				$expand                 = '<fieldset class="editor-expand hidden"><legend>' . __( 'Additional settings' ) . '</legend>';
+				$expand                .= '<p><input type="checkbox" id="editor-expand-toggle"' . checked( get_user_setting( 'editor_expand', 'on' ), 'on', false ) . ' />';
+				$expand                .= '<label for="editor-expand-toggle">' . __( 'Enable full-height editor and distraction-free functionality.' ) . '</label></p></fieldset>';
 				$this->_screen_settings = $expand;
 			}
 		}
@@ -1179,10 +1179,8 @@ final class WP_Screen {
 	 * @return string Meta box reordering option markup.
 	 */
 	private function get_meta_box_reordering_option() {
-		return '<label for="meta-box-reordering">'
-			. '<input class="meta-box-reordering-toggle" name="meta-box-reordering" type="checkbox" id="meta-box-reordering" value="enabled" ' . checked( wp_is_meta_box_reordering_enabled(), true, false ) . ' /> '
-			. __( 'Enable box reordering' )
-			. '</label>';
+		return '<p><input class="meta-box-reordering-toggle" name="meta-box-reordering" type="checkbox" id="meta-box-reordering" value="enabled" ' . checked( wp_is_meta_box_reordering_enabled(), true, false ) . ' /> '
+			. '<label for="meta-box-reordering">' . __( 'Enable box reordering' ) . '</label></p>';
 	}
 
 	/**
