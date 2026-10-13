@@ -16,6 +16,9 @@
 	font-size: 13px;
 	font-weight: 600;
 	background: #f6f7f7;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .widget-top .widget-action {
@@ -295,26 +298,14 @@
 .sidebar-name {
 	position: relative;
 	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 5px;
 }
 
 .js .sidebar-name {
 	cursor: pointer;
-}
-
-.sidebar-name .handlediv {
-	float: right;
-	width: 38px;
-	height: 38px;
-	border: 0;
-	margin: 0;
-	padding: 8px;
-	background: none;
-	cursor: pointer;
-	outline: none;
-}
-
-#widgets-right .sidebar-name .handlediv {
-	margin: 5px 3px 0 0;
 }
 
 .sidebar-name .handlediv:focus {
@@ -451,11 +442,6 @@ div#widgets-left .widget-holder {
 /* Not sure what this is for... */
 div#widgets-left .inactive-sidebar .widget.expanded {
 	left: auto;
-}
-
-.widget-title-action {
-	float: right;
-	position: relative;
 }
 
 div#widgets-left .inactive-sidebar .widgets-sortables {

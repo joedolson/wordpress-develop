@@ -99,11 +99,17 @@ function wp_list_widget_controls( $sidebar, $sidebar_name = '' ) {
 		);
 		?>
 		<div class="sidebar-name" data-add-to="<?php echo esc_attr( $add_to ); ?>">
-			<button type="button" class="handlediv hide-if-no-js" aria-expanded="true">
-				<span class="screen-reader-text"><?php echo esc_html( $sidebar_name ); ?></span>
-				<span class="toggle-indicator" aria-hidden="true"></span>
-			</button>
 			<h2><?php echo esc_html( $sidebar_name ); ?> <span class="spinner"></span></h2>
+			<?php
+			$widgets_button = '<button type="button" class="handlediv hide-if-no-js" aria-expanded="true">
+				<span class="screen-reader-text">' . __( 'Expand sidebar widgets' ) . '</span>
+				<span class="toggle-indicator" aria-hidden="true"></span>
+			</button>';
+			$widgets_args   = array(
+				'button' => $widgets_button,
+			);
+			echo wp_get_tooltip( __( 'Expand sidebar widgets' ), $widgets_args );
+			?>
 		</div>
 		<?php
 	}
@@ -243,29 +249,28 @@ function wp_widget_control( $sidebar_args ) {
 	echo $sidebar_args['before_widget'];
 	?>
 	<div class="widget-top">
+	<div class="widget-title"><h3><?php echo $widget_title; ?><span class="in-widget-title"></span></h3></div>
 	<div class="widget-title-action">
-		<button type="button" class="widget-action hide-if-no-js" aria-expanded="false">
-			<span class="screen-reader-text edit">
-				<?php
-				/* translators: Hidden accessibility text. %s: Widget title. */
-				printf( __( 'Edit widget: %s' ), $widget_title );
-				?>
-			</span>
-			<span class="screen-reader-text add">
-				<?php
-				/* translators: Hidden accessibility text. %s: Widget title. */
-				printf( __( 'Add widget: %s' ), $widget_title );
-				?>
-			</span>
+		<?php
+		/* translators: Hidden accessibility text. %s: Widget title. */
+		$edit_widget_text = sprintf( __( 'Edit widget: %s' ), $widget_title );
+		$add_widget_text  = sprintf( __( 'Add widget: %s' ), $widget_title );
+		$widget_text      = ( $add_new ) ? $add_widget_text : $edit_widget_text;
+		$widgets_button   = '<button type="button" class="widget-action hide-if-no-js" aria-expanded="true">
+			<span class="screen-reader-text">' . $widget_text . '</span>
 			<span class="toggle-indicator" aria-hidden="true"></span>
-		</button>
+		</button>';
+		$widgets_args   = array(
+			'button' => $widgets_button,
+		);
+		echo wp_get_tooltip( $widget_text, $widgets_args );
+		?>
 		<a class="widget-control-edit hide-if-js" href="<?php echo esc_url( add_query_arg( $query_arg ) ); ?>">
 			<span class="edit"><?php _ex( 'Edit', 'widget' ); ?></span>
 			<span class="add"><?php _ex( 'Add', 'widget' ); ?></span>
 			<span class="screen-reader-text"><?php echo $widget_title; ?></span>
 		</a>
 	</div>
-	<div class="widget-title"><h3><?php echo $widget_title; ?><span class="in-widget-title"></span></h3></div>
 	</div>
 
 	<div class="widget-inside">

@@ -308,6 +308,7 @@ window.wpWidgets = {
 				if ( $widget.hasClass('deleting') ) {
 					wpWidgets.save( $widget, 1, 0, 1 ); // Delete widget.
 					$widget.remove();
+					wp.a11y.speak( wp.i18n.__( 'Widget removed.' ) );
 					return;
 				}
 
@@ -508,6 +509,7 @@ window.wpWidgets = {
 		$.post( ajaxurl, data, function() {
 			$( '#inactive-widgets-control-remove' ).prop( 'disabled' , ! $( '#wp_inactive_widgets .widget' ).length );
 			$( '.spinner' ).removeClass( 'is-active' );
+			wp.a11y.speak( wp.i18n.__( 'Widget order updated.' ) );
 		});
 	},
 
@@ -565,6 +567,10 @@ window.wpWidgets = {
 						$( '#inactive-widgets-control-remove' ).prop( 'disabled' , ! $( '#wp_inactive_widgets .widget' ).length );
 					}
 				}
+				wp.a11y.speak( wp.i18n.__( 'Widget removed.' ) );
+				// Set focus to the first button in the widget container.
+				let $buttons = widget.closest( 'div.widgets-sortables' ).find( 'button' );
+				$buttons[0].focus();
 			} else {
 				$( '.spinner' ).removeClass( 'is-active' );
 				if ( r && r.length > 2 ) {
@@ -580,6 +586,7 @@ window.wpWidgets = {
 					delete self.dirtyWidgets[ id ];
 
 					$document.trigger( 'widget-updated', [ widget ] );
+					wp.a11y.speak( wp.i18n.__( 'Widget updated.' ) );
 
 					if ( sidebarId === 'wp_inactive_widgets' ) {
 						$( '#inactive-widgets-control-remove' ).prop( 'disabled' , ! $( '#wp_inactive_widgets .widget' ).length );
@@ -612,6 +619,9 @@ window.wpWidgets = {
 				$widget.remove();
 			});
 			$( '#inactive-widgets-control-remove' ).prop( 'disabled', true );
+			wp.a11y.speak( wp.i18n.__( 'Inactive widgets cleared.' ) );
+			$( '#wp_inactive_widgets' ).find( 'button' ).first().trigger( 'focus' );
+
 			$( '.spinner', $element ).removeClass( 'is-active' );
 		} );
 	},
